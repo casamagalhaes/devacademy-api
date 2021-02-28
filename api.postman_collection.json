@@ -28,13 +28,40 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/products/c254557d-3890-483b-a7ca-123be9f84f2a",
+					"raw": "{{host}}/products/f0654d3f-6851-413f-9b24-de12e0ec7367",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"products",
-						"c254557d-3890-483b-a7ca-123be9f84f2a"
+						"f0654d3f-6851-413f-9b24-de12e0ec7367"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /products/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"f0654d3f-6851-413f-9b24-de12e0ec7367\",\n    \"name\": \"OLEO DE SOJA SOYA 900ML\",\n    \"price\": 6.36\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/products/f0654d3f-6851-413f-9b24-de12e0ec7367",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						"f0654d3f-6851-413f-9b24-de12e0ec7367"
 					]
 				}
 			},
@@ -83,6 +110,26 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"variable": [
