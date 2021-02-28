@@ -26,11 +26,16 @@ module.exports = class ProductService {
 
     async update(id, data) {
         await this.validateBeforeSave(data);
-        return await database.execute(
+        const affectedRows = await database.execute(
             `UPDATE products SET name = ?, price = ? WHERE id = ?`,
-            [data.name, data.price, data.id],
+            [data.name, data.price, id],
             this.connection
         );
+        if (!affectedRows) throw new NotFoundError('product not found');
+        return {
+            ...data,
+            id
+        };
     }
 
     async findAll() {

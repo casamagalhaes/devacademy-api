@@ -36,7 +36,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    await productService.update(req.params.id, req.body);
+    const data = await productService.update(req.params.id, req.body);
     return res.json(data);
   } catch (err) {
     next(err);

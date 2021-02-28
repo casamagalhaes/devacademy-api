@@ -1,53 +1,24 @@
 {
 	"info": {
-		"_postman_id": "54838277-bd4f-4967-8b2b-be0281335cc6",
-		"name": "Rest API",
+		"_postman_id": "df1da185-f706-4c87-9229-5973ae3e5209",
+		"name": "Others",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "GET /products",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/products",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"products"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET /products/:id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/products/c254557d-3890-483b-a7ca-123be9f84f2a",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"products",
-						"c254557d-3890-483b-a7ca-123be9f84f2a"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST /products",
+			"name": "Consulta FarolPracos",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ba087437-eee0-4b40-8f9a-9bdf8decebf4",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"OLEO DE SOJA SOYA 900ML\",\n    \"price\": 6.36\n}",
+					"raw": "{\n    \"id\": \"2020M09\",\n    \"assinanteId\": \"03879760000109\",\n    \"lojaId\": \"12\",\n    \"gtin\": \"000007891000070765\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -55,34 +26,41 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/products",
+					"raw": "http://localhost:3000/v1/insights/farol-precos/consulta",
+					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"localhost"
 					],
+					"port": "3000",
 					"path": [
-						"products"
+						"v1",
+						"insights",
+						"farol-precos",
+						"consulta"
 					]
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"name": "DELETE /products/:id",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/products/29a308b1-ca14-4858-bad6-e7e20a72a377",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"products",
-						"29a308b1-ca14-4858-bad6-e7e20a72a377"
-					]
-				}
-			},
-			"response": []
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"variable": [
