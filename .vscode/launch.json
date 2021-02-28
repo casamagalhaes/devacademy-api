@@ -16,7 +16,8 @@
                 "<node_internals>/**"
             ],
             "env": {
-                "DATABASE": "db.sqlite"
+                "AWS_REGION": "us-east-1",
+                "DYNAMODB_ENDPOINT": "http://localhost:8000"
             },
             "type": "pwa-node"
         }
