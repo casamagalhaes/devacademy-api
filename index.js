@@ -1,16 +1,13 @@
+const http = require('http');
 const debug = require('debug')('devacademy-api-sqlite:server');
 const app = require('./app');
-const http = require('http');
-const port = (process.env.PORT || '3000');
-app.set('port', port);
+
+const port = process.env.PORT || '3000';
+
 const server = http.createServer(app);
-server.listen(port);
 
 server.on('error', (error) => {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
+  if (error.syscall !== 'listen') throw error;
   switch (error.code) {
     case 'EACCES':
       console.error(`${port} requires elevated privileges`);
@@ -23,7 +20,4 @@ server.on('error', (error) => {
   }
 });
 
-server.on('listening', () => {
-  const addr = server.address();
-  debug(`Listening on ${addr.port}`);
-});
+server.listen(port, () => debug(`Listening on ${server.address().port}`));

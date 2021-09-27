@@ -1,24 +1,49 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Launch via NPM",
-            "request": "launch",
-            "runtimeArgs": [
-                "run-script",
-                "start"
-            ],
-            "runtimeExecutable": "npm",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "env": {
-                "DATABASE": "db.sqlite"
-            },
-            "type": "pwa-node"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "name": "db:create",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/*"],
+      "program": "${workspaceFolder}/bin/create.js",
+      "env": {
+        "DATABASE": "db.sqlite"
+      }
+    },
+    {
+      "type": "node",
+      "name": "db:destroy",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/*"],
+      "program": "${workspaceFolder}/bin/destroy.js",
+      "env": {
+        "DATABASE": "db.sqlite"
+      }
+    },
+    {
+      "type": "node",
+      "name": "db:reset",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/*"],
+      "program": "${workspaceFolder}/bin/reset.js",
+      "env": {
+        "DATABASE": "db.sqlite"
+      }
+    },
+    {
+      "type": "node",
+      "name": "server",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/*"],
+      "program": "${workspaceFolder}/index.js",
+      "env": {
+        "DATABASE": "db.sqlite",
+        "DEBUG": "devacademy*"
+      },
+      "restart": true,
+      "sourceMaps": false,
+      "outputCapture": "std"
+    }
+  ]
 }
