@@ -1,5 +1,7 @@
+require('express-async-errors');
 const express = require('express');
 const logger = require('morgan');
+const { ApiError } = require('./lib/errors');
 
 const productsRouter = require('./routes/products');
 
@@ -10,11 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/products', productsRouter);
 app.use((err, _, res, next) => {
-    if (err.statusCode) {
-        return res.status(err.statusCode).send(err.message);
-    } else {
-        return res.status(500);
-    }
+  if (err instanceof ApiError)
+    return res.status(err.statusCode).json({ message: err.message });
+  return res.status(500);
 });
 
 module.exports = app;

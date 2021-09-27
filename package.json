@@ -4,14 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "db:create": "node -e \"const db = require('./database'); (async () => await db.create())();\"",
-    "db:destroy": "node -e \"const db = require('./database'); (async () => await db.destroy())();\"",
-    "db:reset": "node -e \"const db = require('./database'); (async () => await db.reset())();\""
+    "db:create": "node bin/create",
+    "db:destroy": "node bin/destroy",
+    "db:reset": "node bin/reset"
   },
   "dependencies": {
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-async-errors": "^3.1.1",
     "morgan": "~1.9.1",
+    "prettier": "^2.4.1",
     "sqlite3": "^5.0.2",
     "uuid": "^8.3.2"
   }
