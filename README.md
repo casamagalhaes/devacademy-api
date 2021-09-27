@@ -1,7 +1,13 @@
-# Api Express
+# REST API Express
 
-## Criar banco de dados
-`DATABASE=db.sqlite npm run db:create`
+## Create Database
 
-## Rodar projeto
-`DATABASE=db.sqlite npm start`
+```shell
+DATABASE=db.sqlite npm run db:create
+```
+
+## Run
+
+```shell
+DATABASE=db.sqlite npm start
+```

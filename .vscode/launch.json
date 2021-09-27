@@ -1,25 +1,53 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Launch via NPM",
-            "request": "launch",
-            "runtimeArgs": [
-                "run-script",
-                "start"
-            ],
-            "runtimeExecutable": "npm",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "env": {
-                "AWS_REGION": "us-east-1",
-                "DYNAMODB_ENDPOINT": "http://localhost:8000"
-            },
-            "type": "pwa-node"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "name": "db:create",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/*"],
+      "program": "${workspaceFolder}/bin/create.js",
+      "env": {
+        "AWS_REGION": "us-east-1",
+        "DYNAMODB_ENDPOINT": "http://localhost:8000",
+      }
+    },
+    {
+      "type": "node",
+      "name": "db:destroy",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/*"],
+      "program": "${workspaceFolder}/bin/destroy.js",
+      "env": {
+        "AWS_REGION": "us-east-1",
+        "DYNAMODB_ENDPOINT": "http://localhost:8000",
+      }
+    },
+    {
+      "type": "node",
+      "name": "db:reset",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/*"],
+      "program": "${workspaceFolder}/bin/reset.js",
+      "env": {
+        "AWS_REGION": "us-east-1",
+        "DYNAMODB_ENDPOINT": "http://localhost:8000",
+      }
+    },
+    {
+      "type": "node",
+      "name": "server",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/*"],
+      "program": "${workspaceFolder}/index.js",
+      "env": {
+        "AWS_REGION": "us-east-1",
+        "DYNAMODB_ENDPOINT": "http://localhost:8000",
+        "DEBUG": "devacademy*"
+      },
+      "restart": true,
+      "sourceMaps": false,
+      "outputCapture": "std"
+    }
+  ]
 }
