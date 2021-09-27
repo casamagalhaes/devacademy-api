@@ -3,11 +3,12 @@
 ## Create Database
 
 ```shell
-DATABASE=db.sqlite npm run db:create
+AWS_REGION=us-east-1 DYNAMODB_ENDPOINT=http://localhost:8000 npm run db:create
 ```
 
 ## Run
 
 ```shell
-DATABASE=db.sqlite npm start
+AWS_REGION=us-east-1 DYNAMODB_ENDPOINT=http://localhost:8000 npm start
 ```
+

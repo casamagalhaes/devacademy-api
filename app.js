@@ -14,7 +14,8 @@ app.use('/products', productsRouter);
 app.use((err, _, res, next) => {
   if (err instanceof ApiError)
     return res.status(err.statusCode).json({ message: err.message });
-  return res.status(500);
+  console.error(err);
+  return res.status(500).json({ message: 'server error' });
 });
 
 module.exports = app;
