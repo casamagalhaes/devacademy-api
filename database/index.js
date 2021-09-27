@@ -14,19 +14,30 @@ const ensureConnection = async (alreadyConnection) => {
   return { connection, runAsync, allAsync, closeAsync };
 };
 
+const runScript = async (script, alreadyConnection) => {
+  const { connection, closeAsync, runAsync } = await ensureConnection(alreadyConnection);
+  return new Promise((resolve, reject) =>
+    connection.serialize(async () => {
+      try {
+        for (statement of  script.split('GO;')) {
+          console.log('[execute]: sql: %s', statement.trim());
+          await runAsync(statement);
+        }
+        return resolve();
+      } catch (error) {
+        return reject();
+      }
+    })
+  );
+};
+
 const create = async () => {
   const { connection, closeAsync, runAsync } = await ensureConnection();
   const script = await fs.promises.readFile(
     `${__dirname}/migrations/database.sql`,
     { encoding: 'utf-8' }
   );
-  const statements = script.split('GO;');
-  connection.serialize(async (cb) => {
-    for (statement of statements) {
-      console.log('[execute]: sql: %s', statement.trim());
-      await runAsync(statement);
-    }
-  });
+  await runScript(script, connection);
   await closeAsync();
   console.log('[database] created');
 };
